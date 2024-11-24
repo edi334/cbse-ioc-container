@@ -1,0 +1,15 @@
+<components>
+    <component id="bookLister" type="IocContainer.BookLister">
+        <dependency name="bookRepository" ref="bookRepository" />
+    </component>
+    <component id="bookRepository" type="IocContainer.BookRepository">
+        <dependency name="database" ref="databaseInMemory" />
+    </component>
+    <component id="databaseInMemory" type="IocContainer.InMemoryDatabase">
+        <dependency name="networkCommunicator" ref="networkCommunicator" />
+    </component>
+    <component id="databaseSQL" type="IocContainer.SQLDatabase">
+        <dependency name="networkCommunicator" ref="networkCommunicator" />
+    </component>
+    <component id="networkCommunicator" type="IocContainer.NetworkCommunicator" />
+</components>
