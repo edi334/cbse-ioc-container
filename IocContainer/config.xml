@@ -3,7 +3,7 @@
         <dependency name="bookRepository" ref="bookRepository" />
     </component>
     <component id="bookRepository" type="IocContainer.BookRepository">
-        <dependency name="database" ref="databaseInMemory" />
+        <dependency name="dataBase" ref="databaseInMemory" />
     </component>
     <component id="databaseInMemory" type="IocContainer.InMemoryDatabase">
         <dependency name="networkCommunicator" ref="networkCommunicator" />

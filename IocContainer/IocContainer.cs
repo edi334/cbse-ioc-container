@@ -10,7 +10,8 @@ public class IocContainer
 
     public void LoadConfig(string configFile)
     {
-        var config = XDocument.Load(configFile);
+        var configPath = "../../../" + configFile;
+        var config = XDocument.Load(configPath);
 
         foreach (var component in config.Root.Elements("component"))
         {
@@ -52,7 +53,7 @@ public class IocContainer
         foreach (var param in constructorParams)
         {
             var dependency = _dependencyRegistry[id].Find(d => d.Name == param.Name);
-            if (dependency.Equals(default((string, string))))
+            if (dependency.Equals(default))
                 throw new InvalidOperationException($"Dependency {param.Name} is not configured for {id} in the IOC Container");
             dependencies.Add(Resolve<object>(dependency.Ref));
         }
